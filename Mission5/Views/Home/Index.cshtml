@@ -1,5 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="~/lib/bootstrap/assets/img/band.jpg" alt="..." />
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Make your event</span>
+                    <span class="section-heading-lower">Worth attending</span>
+                </h2>
+                <p class="mb-3">East of the Cornmill is a Utah born and raised rock band that can turn any wedding, birthday party, or funeral into an unforgettable musical experience.</p>
+                <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" asp-area="" asp-controller="Home" asp-action="Privacy">Get a quote today!</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Let's get together and</span>
+                        <span class="section-heading-lower">ROCK!</span>
+                    </h2>
+                    <p class="mb-0">Have you ever been to a party that was so boring tears left your eyes? Or, have you ever had a birthday and none of your friends showed up? We can fix that. East of the Cornmill is Utah County's premier cover band ranging all genres across the 60s, 70s, and 80s.</p>
+                    <p class="mb-0">Need a Disco theme for your bingo night? We got you covered. Want a total 80s throwback for your highschool reunion? Done. Get a quote for your event today and turn your event from average and forgettable to exciting and everlasting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
