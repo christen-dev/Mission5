@@ -9,6 +9,7 @@ namespace Mission6_Christensen.Models
 
         }
 
-        public DbSet<Movie> Movies { get; set;}
+        public DbSet<Movies> Movies { get; set;}
+        public DbSet<Categories> Categories { get; set;}
     }
 }

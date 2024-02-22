@@ -28,15 +28,17 @@ namespace Mission6_Christensen.Controllers
         [HttpGet]
         public IActionResult Form()
         {
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Form(Movie response)
+        public IActionResult Form(Movies response)
         {
-            if (response.Lent == null)
+            ViewBag.Categories = _context.Categories.ToList();
+            if (response.LentTo == null)
             {
-                response.Lent = "";
+                response.LentTo = "";
             }
             if (response.Notes == null)
             {
@@ -44,7 +46,69 @@ namespace Mission6_Christensen.Controllers
             }
             _context.Movies.Add(response); //add record to database
             _context.SaveChanges();
-            return View(response);
+            return View("Form");
+        }
+
+        public IActionResult MovieList(Movies response)
+        {
+            ViewBag.Categories = _context.Categories.ToList();
+            if (response.Director == null)
+            {
+                response.Director = "";
+            }
+            if (response.Rating == null)
+            {
+                response.Rating = "";
+            }
+            if (response.LentTo == null)
+            {
+                response.LentTo = "0";
+            }
+            if (response.Notes == null)
+            {
+                response.Notes = "";
+            }
+            var movies = _context.Movies
+                .ToList();
+
+            return View(movies);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            ViewBag.Categories = _context.Categories.ToList();
+            return View("Form", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movies updated) 
+        {
+            _context.Update(updated);
+            _context.SaveChanges();
+            return RedirectToAction("MovieList");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id) 
+        {
+            ViewBag.Categories = _context.Categories.ToList();
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View("Confirmation", recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movies deleted)
+        {
+            _context.Remove(deleted);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
     }
 }
